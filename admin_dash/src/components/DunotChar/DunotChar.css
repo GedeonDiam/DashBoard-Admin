@@ -1,0 +1,86 @@
+.donut-chart-container {
+  background: rgba(31, 41, 55, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  border-radius: 24px;
+  padding: 0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  height: 100%;
+}
+
+.donut-chart-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.5), transparent);
+}
+
+.donut-chart-container:hover {
+  transform: translateY(-2px);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.chart-content {
+  padding: 32px 24px 24px 24px; /* Plus d'espace en haut pour le titre */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 56px); /* Ajuster la hauteur pour compenser le padding */
+}
+
+/* État de chargement */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  color: #9CA3AF;
+  font-family: 'Inter', sans-serif;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(168, 85, 247, 0.1);
+  border-top: 3px solid #A855F7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive premium */
+@media (max-width: 768px) {
+  .donut-chart-container {
+    border-radius: 16px;
+    min-height: 350px;
+  }
+  
+  .chart-content {
+    padding: 24px 16px 16px 16px;
+    height: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .donut-chart-container {
+    min-height: 320px;
+  }
+  
+  .chart-content {
+    padding: 20px 12px 12px 12px;
+    height: calc(100% - 32px);
+  }
+}
